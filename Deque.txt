@@ -1,0 +1,32 @@
+int main() {
+	//deque is used to push and pop on both sides
+	deque<int> d;
+	d.push_back(1);
+	d.push_front(2);
+	
+	for(int i:d){
+	    cout<<i<<endl;
+	}
+	cout<<endl;
+	// d.pop_back();
+	//d.pop_front();
+// 	for(int i:d){
+// 	    cout<<i<<endl;
+// 	}
+	//1st index element
+	cout<<d[0]<<endl;
+	cout<<d.at(1);
+	
+	cout<<endl;
+	cout<<endl;
+	
+	cout<<"Front"<<d.front()<<endl;
+	cout<<d.back()<<endl;
+	
+	cout<<"Empty or Not"<<d.empty()<<endl;
+	
+	cout<<"Before Erasing"<<d.size()<<endl;
+	d.erase(d.begin());
+	cout<<"Size after Erasing"<<d.size()<<endl;
+	return 0;
+}

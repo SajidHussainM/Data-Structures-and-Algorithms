@@ -1,0 +1,42 @@
+int main() {
+    	string s="78945632";
+        string t="aaabbcdddd";
+    int n=s.length();
+    
+    
+        // for(int i=0;i<n-1;i++){
+        //     for(int j=0;j<n-i-1;j++){
+        //         if(s[j]<s[j+1]){
+        //             int temp=s[j];
+        //             s[j]=s[j+1];
+        //             s[j+1]=temp;
+        //         }
+        //     }
+        // }
+    
+    sort(s.begin(),s.end(),greater <int>());
+    cout<<s<<endl;
+    
+    int freq[26];
+    char ans='a';
+    
+    for(int i=0;i<26;i++){
+        freq[i]=0;
+    }
+    
+    for(int i=0;i<t.size();i++){
+        freq[t[i]-'a']++;
+    }
+    int max=0;
+    for(int i=0;i<26;i++){
+        if(freq[i]>max){
+            max=freq[i];
+            //i+'a' Gives the particular letter ex 1+a=b
+            ans = i+'a';
+        }
+    }
+    
+    cout<<max<<endl<<ans;
+    
+    
+}

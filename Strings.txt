@@ -1,0 +1,58 @@
+Strings have end character as /0 , They are used instead of char array because they are allocated Dyanamically.
+
+
+1)Appending is easier:
+
+str.append(str2)  or  str+str2
+
+2)Clear the String:
+str.clear()
+
+3) Compare
+
+str.compare(str2)  Comapre str with str2  
+if equal gives 0
+if  str>str2 positive val
+if str<str2 Negative val
+
+4) Empty or not
+
+str.empty() Return true if empty
+
+5) Erase
+
+To Erase a part of a string:
+
+str.erase(start index,no of characters)
+
+6) Find
+
+Used to find a character or substring in string
+
+str.find("character to find")
+Returns the first index where the element is found
+
+7) Insert
+
+Used to insert a element at a particular index
+
+str.insert(index,"String");
+
+
+8) Length of string
+
+str.lenght()  or str.size()
+
+9) substr
+
+Returns a substring from a start index to end index 
+
+str.substr(start index,no of characters)
+
+10)     STOI : String to Integer
+
+   stoi(str)
+
+11)  Integer to string
+
+    to_string(str)

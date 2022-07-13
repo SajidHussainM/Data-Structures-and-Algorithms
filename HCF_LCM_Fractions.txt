@@ -1,0 +1,30 @@
+class sort{
+    public:
+    
+    int hcf(int a,int b){
+        if(a==0) return b;
+        return hcf(b%a,a);
+    }
+    int lcm(int a,int b){
+        int lcm=(a*b)/hcf(a,b);
+        return lcm;
+    }
+
+    int add(int a,int b,int c,int d){
+      int lc=lcm(b,d);
+      cout<<"Deno"<<lc<<endl;
+      int nume=lc/b*a+lc/d*c;
+      cout<<"Numer"<<nume<<endl;
+      return 0;
+    }
+    
+    
+};
+
+int main(){
+     sort obj;
+        cout<<obj.hcf(20,50)<<endl;
+        cout<<obj.lcm(20,50)<<endl;
+        obj.add(1,20,4,15);
+        return 0;
+}
