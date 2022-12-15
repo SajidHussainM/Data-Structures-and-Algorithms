@@ -1,2 +1,3 @@
-# Data-Structures-and-Algorithms
-This is my journey of learning the Data Structures and Algorithms in c++
+# C++-DSA
+This is my journey of solving various Data Structures and Algorithms using the C++ Language.
+I love solving new challenges and problems everyday!
