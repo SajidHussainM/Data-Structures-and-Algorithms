@@ -1,0 +1,374 @@
+1. Bubble Sort:
+
+class Solution
+
+{
+
+    public:
+
+    //Function to sort the array using bubble sort algorithm.
+
+    void bubbleSort(int arr[], int n)
+
+    {
+
+        for(int i=0;i<n-1;i++){
+
+//we are going for n-i because for each iteration of i we have already put the
+
+biggest ele at the end of the array in 0th loop and 2nd largest in 1st loop and so on
+
+-1 because we are doing j+1
+
+            for(int j=0;j<n-i-1;j++){
+
+                if(arr[j]>arr[j+1])
+
+                {
+
+                    int temp = arr[j];
+
+                    arr[j] = arr[j+1];
+
+                    arr[j+1] = temp;
+
+                }
+
+            }
+
+        }
+
+    }
+
+};
+
+ 
+
+ 2. Selection Sort
+ 
+ 
+ Based on Picking the Smallest ele and putting it first
+
+ 
+
+void selectionSort(int arr[], int n)
+
+    {
+
+     
+
+     
+
+      for(int i=0;i<n;i++){
+
+         int mini = i;
+
+         for(int j=i+1;j<n;j++){
+
+             if(arr[j]<arr[mini])
+
+                mini = j;
+
+         }
+
+        
+
+        
+
+         int temp = arr[mini];
+
+         arr[mini] = arr[i];
+
+         arr[i] = temp;
+
+      }
+
+    }
+    
+    
+    3.Insertion Sort
+ 
+
+Consists of sorted and not sorted parts and inserting the elements
+
+at the sorted position and shifting the greater elements.
+
+ 
+
+ 
+
+void insertionSort(int arr[], int n)
+
+    {
+
+        for(int i=1;i<n;i++){
+
+            int temp = arr[i];
+
+            int j = i-1;
+
+           
+
+Go in rev to find the if any ele is greater than temp and right shift it by 1
+
+            while(j>=0 && arr[j]>temp){
+
+                arr[j+1] = arr[j];
+
+                j--;
+
+            }
+
+           
+
+            arr[j+1] = temp;
+
+        }
+
+    }
+
+ 
+ 
+ 4.  Merge Sort:
+ 
+
+We divide the array into sub problem parts and solve the individual parts
+
+ 
+
+void merge(int arr[], int l, int m, int r)
+
+    {
+
+         int i = l;
+
+         int j = m + 1;
+
+         int k = 0;
+
+        
+
+         int b[r - l + 1];
+
+        
+
+         while(i<=m && j<=r){
+
+             if(arr[i]<=arr[j]){
+
+                 b[k] = arr[i];
+
+                 i++;
+
+             }
+
+             else{
+
+                 b[k] = arr[j] ;
+
+                 j++;
+
+             }
+
+             k++;
+
+         }
+
+        
+
+       
+
+             while(j<=r){
+
+                 b[k] = arr[j];
+
+                 k++;
+
+                 j++;
+
+             }
+
+         
+
+        
+
+     
+
+           
+
+             while(i<=m){
+
+                 b[k] = arr[i];
+
+                 k++;
+
+                 i++;
+
+             }
+
+        
+
+        
+
+            
+
+        
+
+         for(int i=0;i<k;i++)
+
+         {
+
+             arr[i+l] = b[i] ;
+
+         }
+
+        
+
+      
+
+        
+
+    }
+
+ 
+
+ 
+
+ 
+
+    public:
+
+    void mergeSort(int arr[], int l, int r)
+
+    {
+
+        if(l>=r){  
+
+           
+
+            return ; 
+
+        }
+
+       
+
+            int mid =  l + (r - l) / 2;
+
+            mergeSort(arr,l,mid);
+
+            mergeSort(arr,mid+1,r);
+
+            merge(arr,l,mid,r);
+
+}
+
+       
+
+          
+
+ 
+
+ 5. Quick Sort:
+ 
+ 
+ This is similar to height wise arrangement of people
+
+ 
+
+ 
+
+i checks for ele greater than pivot whereas j checks for ele smaller than pivot
+
+so both i and j swap this makes ele greater than pivot on right and ele smaller than
+
+pivot on left
+
+ 
+  
+
+class Solution
+
+{
+
+    public:
+    
+    //Function to sort an array using quicksort algorithm.    
+    void quickSort(int arr[], int low, inthigh)    {        
+    
+    if(low<high){
+    
+    //this sorts the first ele in the array and puts it in right position
+
+          int  j = partition(arr,low,high);
+
+//solve for the left
+
+          quickSort(arr,low,j-1);
+
+//solve for the right
+
+          quickSort(arr,j+1,high);
+
+       }
+
+    }
+    
+    
+    
+    public:
+
+    int partition (int arr[], int low, int high)
+
+    {
+
+       int pivot = arr[low];
+
+       int i = low;
+
+       int j = high;
+
+      
+
+       while(i<j){
+
+      
+
+//
+
+i checks for ele greater than pivot whereas j checks for ele smaller than pivot
+
+so both i and j swap this makes ele greater than pivot on right and ele smaller than
+
+pivot on left
+
+       while(i<high && arr[i]<=pivot) i++;
+
+      
+
+       while(j>=low && arr[j]>pivot) j--;
+
+      
+
+       if(i<j) swap(arr[i],arr[j]);
+
+      
+
+       }
+
+      
+
+       swap(arr[low],arr[j]);
+
+      
+
+       return j;
+
+ 
+
+      
+
+    }
+
+};
+
+ 
