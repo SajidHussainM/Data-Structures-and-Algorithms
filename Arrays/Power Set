@@ -1,0 +1,94 @@
+/{ Driver Code Starts
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+ 
+
+// } Driver Code Ends
+
+class Solution{
+
+public:
+
+vector<string> AllPossibleStrings(string s){
+
+    int n=s.size();
+
+    vector<string> ans;
+
+    string temp;
+
+//(1<<n)-1  this is same as (2^n)-1 which is the total number of subsets
+
+    for(int i=1;i<=((1<<n)-1);i++){
+
+         temp="";
+
+//This loop is for checking which bit is set 0-2 (n = 2)
+
+        for(int j=0;j<n;j++){
+
+//this condition is checking which bit is set with respect to i converted in binary form
+
+            if(i&(1<<j)){
+
+                temp +=s[j];
+
+            }
+
+        }
+
+       
+
+        ans.push_back(temp);
+
+      
+
+    }
+
+    sort(ans.begin(),ans.end());
+
+    return ans;
+
+}
+
+};
+
+ 
+
+//{ Driver Code Starts.
+
+int main(){
+
+int tc;
+
+cin >> tc;
+
+while(tc--){
+
+string s;
+
+cin >> s;
+
+Solution ob;
+
+vector<string> res = ob.AllPossibleStrings(s);
+
+for(auto i : res)
+
+cout << i <<" ";
+
+cout << "\n";
+
+ 
+
+}
+
+return 0;
+
+}
+
+// } Driver Code Ends
+
