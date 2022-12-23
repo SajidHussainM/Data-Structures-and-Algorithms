@@ -1,0 +1,93 @@
+Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+
+You must do it in place.
+
+
+void setZeroes(vector<vector<int>>& matrix) {
+
+        int col=0,firstRow=0;
+
+        //This is to check if any row is zero or not of 1st column
+
+        for(int i=0;i<matrix.size();i++){
+
+                   if(matrix[i][0]==0) col=1;
+
+        }
+
+       
+
+       
+
+        //See if the first row needs to be set zero as well
+
+       
+
+            for(int i=0;i<matrix[0].size();i++){
+
+                if(matrix[0][i]==0) firstRow=1;           
+
+        }
+
+       
+
+        //check for zero in rows then make the respective col and row zero
+
+        for(int i=1;i<matrix.size();i++){
+
+            for(int j=1;j<matrix[0].size();j++){
+
+                if(matrix[i][j]==0) matrix[i][0]=matrix[0][j]=0;
+
+            }
+
+        }
+
+       
+
+         // Iterate over the array once again and using the first row and first column, update the elements.      
+
+ 
+
+        for(int i=1;i<matrix.size();i++){
+
+            for(int j=1;j<matrix[0].size();j++){
+
+               if(matrix[i][0]==0 || matrix[0][j]==0)
+
+                   matrix[i][j]=0;
+
+            }
+
+        }
+
+       
+
+       
+
+       
+
+          [
+
+       
+
+        //making first row zero if firstRow=true
+
+        if(firstRow)
+
+        {
+
+            for(int i=0;i<matrix[0].size();i++){
+
+                matrix[0][i]=0;
+
+            }
+
+        }
+
+    }
+    
+    
+    
+    Brute Force: Initializeeverything with the corr row and col with -1(if we do it with zero ) in thenextLoop there is anerror as extra zeros are added. 
+    In next loop make -1to 0.  Using space: Use two separatearrays for marking row and col numbers. 
