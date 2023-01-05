@@ -1,0 +1,114 @@
+/*
+
+84. Largest Rectangle in Histogram
+Hard
+13K
+185
+Companies
+Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
+
+ 
+
+Example 1:
+
+
+Input: heights = [2,1,5,6,2,3]
+Output: 10
+Explanation: The above is a histogram where width of each bar is 1.
+The largest rectangle is shown in the red area, which has an area = 10 units.
+Example 2:
+
+
+Input: heights = [2,4]
+Output: 4
+ 
+
+Constraints:
+
+1 <= heights.length <= 105
+0 <= heights[i] <= 104
+
+ */
+ 
+ 
+ 1) O(N^2) Force:
+ 
+ //find any element which is immediate smaller on the left and the right , for every index i.
+ We then get the length of the rectangle possible for that index , mutliply that by the height will give you the area of the rectangle.
+ 
+ class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        int area = 0 , n = heights.size();
+
+        for(int i=0; i<n; i++) {
+            int j = i - 1;
+
+            while(j>=0 && heights[j]>=heights[i])
+                j--;
+
+            int k = i + 1;
+             while(k<n && heights[k]>=heights[i])
+                k++;
+
+            int a = heights[i] * (k - j - 1);
+
+            area = max(a,area);
+
+        }
+
+        return area;
+        
+    }
+};
+
+
+2) Using Stack  O(N) :
+
+
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        int area = INT_MIN , n = heights.size();
+
+        stack<int> st;
+
+        vector<int> leftSmall(n) , rightSmall(n);
+
+        for(int i=0; i<n; i++){
+            while(!st.empty() && heights[i] <= heights[st.top()] )
+                st.pop();
+
+            if(!st.empty()) leftSmall[i] = st.top() + 1;
+            else leftSmall[i] = 0;
+
+            st.push(i);
+        }
+
+
+        while(!st.empty()) st.pop();
+
+
+        for(int i=n-1; i>=0; i--){
+            while(!st.empty() && heights[i] <= heights[st.top()])
+                st.pop();
+
+            if(!st.empty()) rightSmall[i] = st.top() - 1;
+            else rightSmall[i] = n - 1;
+
+            st.push(i);
+        }
+
+
+
+
+        for(int i=0; i<n; i++){
+            int a = heights[i] * (rightSmall[i] - leftSmall[i] + 1);
+            area = max(area,a);
+        }
+
+
+        return area;
+        
+    }
+};
