@@ -1,4 +1,5 @@
 /**
+ Balanced Tree is one in which depth of right subtree minus depth of left subtree of any node is not greater than 1
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
